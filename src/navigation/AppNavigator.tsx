@@ -1,13 +1,16 @@
-import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import AboutScreen from "../screens/AboutScreen";
-import BookmarksScreen from "../screens/BookmarksScreen";
-import { ROUTERS } from "../shared/constants/routes";
-import { getTabScreenOptions } from "./utils";
-import SurahStack from "../screens/SurahStack";
+import React from 'react';
 
-const Tab = createBottomTabNavigator(); 
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+
+import AboutScreen from '@/screens/AboutScreen';
+import BookmarksScreen from '@/screens/BookmarksScreen';
+import SurahStack from '@/screens/SurahStack';
+import { ROUTERS } from '@/shared/constants';
+
+import { getTabScreenOptions } from './utils';
+
+const Tab = createBottomTabNavigator();
 export type RootStackParamList = {
   SurahList: undefined;
   SurahDetail: { surahNumber: number; surahName: string; targetAyahNumber?: number };
@@ -18,7 +21,7 @@ const tabs = {
   [ROUTERS.quran]: SurahStack,
   [ROUTERS.bookmarks]: BookmarksScreen,
   [ROUTERS.about]: AboutScreen,
-}
+};
 
 export default function AppNavigator() {
   return (

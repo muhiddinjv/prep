@@ -1,4 +1,5 @@
 import { Alert, Linking } from "react-native";
+
 import { DEVELOPER_INFO } from "./app";
 
 export interface SettingItem {

@@ -1,4 +1,3 @@
-
 export interface QuranApiResponse<T> {
   code: number;
   status: string;
@@ -6,10 +5,10 @@ export interface QuranApiResponse<T> {
 }
 
 // Surah List Response
-export interface SurahListResponse extends Array<Surah> {}
+export type SurahListResponse = Array<Surah> & {};
 
 // Individual Surah Response
-export interface SurahResponse extends Surah {}
+export type SurahResponse = Surah & {};
 
 // Surah Type
 export interface Surah {
@@ -81,4 +80,4 @@ export interface SearchResult {
 export interface SearchResponse {
   quran: SearchResult[];
   translation: SearchResult[];
-} 
+}

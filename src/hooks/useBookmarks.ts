@@ -1,6 +1,7 @@
-import { useState, useEffect, useCallback } from 'react';
-import { BookmarkedAyah } from '../types';
+import { useCallback, useEffect, useState } from 'react';
+
 import { bookmarkService } from '../services/bookmarkService';
+import { BookmarkedAyah } from '../types';
 
 export function useBookmarks() {
   const [bookmarks, setBookmarks] = useState<BookmarkedAyah[]>([]);
@@ -26,7 +27,7 @@ export function useBookmarks() {
   const addBookmark = useCallback(async (bookmark: BookmarkedAyah) => {
     try {
       await bookmarkService.saveBookmark(bookmark);
-      setBookmarks(prev => [...prev, bookmark]);
+      setBookmarks((prev) => [...prev, bookmark]);
     } catch (error) {
       console.error('Error adding bookmark:', error);
       throw error;
@@ -36,10 +37,8 @@ export function useBookmarks() {
   const removeBookmark = useCallback(async (surahNumber: number, ayahNumber: number) => {
     try {
       await bookmarkService.removeBookmark(surahNumber, ayahNumber);
-      setBookmarks(prev => 
-        prev.filter(bookmark => 
-          !(bookmark.surahNumber === surahNumber && bookmark.ayahNumber === ayahNumber)
-        )
+      setBookmarks((prev) =>
+        prev.filter((bookmark) => !(bookmark.surahNumber === surahNumber && bookmark.ayahNumber === ayahNumber)),
       );
     } catch (error) {
       console.error('Error removing bookmark:', error);
@@ -47,23 +46,27 @@ export function useBookmarks() {
     }
   }, []);
 
-  const toggleBookmark = useCallback(async (bookmark: BookmarkedAyah) => {
-    const isBookmarked = bookmarks.some(
-      b => b.surahNumber === bookmark.surahNumber && b.ayahNumber === bookmark.ayahNumber
-    );
+  const toggleBookmark = useCallback(
+    async (bookmark: BookmarkedAyah) => {
+      const isBookmarked = bookmarks.some(
+        (b) => b.surahNumber === bookmark.surahNumber && b.ayahNumber === bookmark.ayahNumber,
+      );
 
-    if (isBookmarked) {
-      await removeBookmark(bookmark.surahNumber, bookmark.ayahNumber);
-    } else {
-      await addBookmark(bookmark);
-    }
-  }, [bookmarks, addBookmark, removeBookmark]);
+      if (isBookmarked) {
+        await removeBookmark(bookmark.surahNumber, bookmark.ayahNumber);
+      } else {
+        await addBookmark(bookmark);
+      }
+    },
+    [bookmarks, addBookmark, removeBookmark],
+  );
 
-  const isBookmarked = useCallback((surahNumber: number, ayahNumber: number) => {
-    return bookmarks.some(
-      bookmark => bookmark.surahNumber === surahNumber && bookmark.ayahNumber === ayahNumber
-    );
-  }, [bookmarks]);
+  const isBookmarked = useCallback(
+    (surahNumber: number, ayahNumber: number) => {
+      return bookmarks.some((bookmark) => bookmark.surahNumber === surahNumber && bookmark.ayahNumber === ayahNumber);
+    },
+    [bookmarks],
+  );
 
   const clearAllBookmarks = useCallback(async () => {
     try {
@@ -75,19 +78,13 @@ export function useBookmarks() {
     }
   }, []);
 
-  const updateBookmarkNote = useCallback(async (
-    surahNumber: number, 
-    ayahNumber: number, 
-    note: string
-  ) => {
+  const updateBookmarkNote = useCallback(async (surahNumber: number, ayahNumber: number, note: string) => {
     try {
       await bookmarkService.updateBookmarkNote(surahNumber, ayahNumber, note);
-      setBookmarks(prev => 
-        prev.map(bookmark => 
-          bookmark.surahNumber === surahNumber && bookmark.ayahNumber === ayahNumber
-            ? { ...bookmark, note }
-            : bookmark
-        )
+      setBookmarks((prev) =>
+        prev.map((bookmark) =>
+          bookmark.surahNumber === surahNumber && bookmark.ayahNumber === ayahNumber ? { ...bookmark, note } : bookmark,
+        ),
       );
     } catch (error) {
       console.error('Error updating bookmark note:', error);

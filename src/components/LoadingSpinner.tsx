@@ -1,5 +1,5 @@
-import React from "react";
-import { View, ActivityIndicator, Text, StyleSheet } from "react-native";
+import React from 'react';
+import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 
 interface LoadingSpinnerProps {
   loading: boolean;
@@ -10,13 +10,13 @@ interface LoadingSpinnerProps {
   children?: React.ReactNode;
 }
 
-export default function LoadingSpinner({ 
-  loading, 
-  error, 
-  size = 'large', 
+export default function LoadingSpinner({
+  loading,
+  error,
+  size = 'large',
   color = '#2E7D32',
   text = 'Loading...',
-  children 
+  children,
 }: LoadingSpinnerProps) {
   if (error) {
     return (
@@ -40,20 +40,20 @@ export default function LoadingSpinner({
 
 const styles = StyleSheet.create({
   container: {
+    alignItems: 'center',
+    backgroundColor: '#f8f8f8',
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#f8f8f8",
-  },
-  loadingText: {
-    marginTop: 10,
-    fontSize: 16,
-    color: "#666",
+    justifyContent: 'center',
   },
   errorText: {
+    color: '#d32f2f',
     fontSize: 16,
-    color: "#d32f2f",
-    textAlign: "center",
     paddingHorizontal: 20,
+    textAlign: 'center',
+  },
+  loadingText: {
+    color: '#666',
+    fontSize: 16,
+    marginTop: 10,
   },
 });

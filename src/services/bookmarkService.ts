@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import { BookmarkedAyah } from '../types';
 
 const BOOKMARKS_KEY = '@quranic_bookmarks';

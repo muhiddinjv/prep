@@ -1,31 +1,21 @@
-import { View, Text, StyleSheet } from "react-native";
-import { TouchableOpacity, Switch } from "react-native";
-import Icon from "react-native-vector-icons/MaterialIcons";
-import { COLORS } from "../shared/styles/colors";
+import { StyleSheet, Switch, Text, TouchableOpacity, View } from 'react-native';
+
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
+import { COLORS } from '../shared/styles/colors';
 
 type Props = {
-    icon: string;
-    title: string;
-    subtitle?: string;
-    action?: () => void;
-    showSwitch?: boolean;
-    switchValue?: boolean;
-}
+  icon: string;
+  title: string;
+  subtitle?: string;
+  action?: () => void;
+  showSwitch?: boolean;
+  switchValue?: boolean;
+};
 
-export default function SettingItem({
-    icon,
-    title,
-    subtitle,
-    action,
-    showSwitch,
-    switchValue
-}: Props) {
-    return (
-    <TouchableOpacity 
-      style={styles.settingItem}
-      onPress={action}
-      disabled={!action}
-    >
+export default function SettingItem({ icon, title, subtitle, action, showSwitch, switchValue }: Props) {
+  return (
+    <TouchableOpacity style={styles.settingItem} onPress={action} disabled={!action}>
       <View style={styles.settingLeft}>
         <Icon name={icon} size={24} color={COLORS.primary} style={styles.settingIcon} />
         <View style={styles.settingText}>
@@ -47,36 +37,36 @@ export default function SettingItem({
   );
 }
 
-  const styles = StyleSheet.create({
-    settingItem: {
-      backgroundColor: COLORS.white,
-      flexDirection: "row",
-      alignItems: "center",
-      justifyContent: "space-between",
-      paddingHorizontal: 16,
-      paddingVertical: 16,
-      borderBottomWidth: 1,
-      borderBottomColor: COLORS.quaternary,
-    },
-    settingLeft: {
-      flexDirection: "row",
-      alignItems: "center",
-      flex: 1,
-    },
-    settingIcon: {
-      marginRight: 16,
-    },
-    settingText: {
-      flex: 1,
-    },
-    settingTitle: {
-      fontSize: 16,
-      fontWeight: "500",
-      color: COLORS.secondary,
-      marginBottom: 2,
-    },
-    settingSubtitle: {
-      fontSize: 14,
-      color: COLORS.secondary,
-    },
-  });
+const styles = StyleSheet.create({
+  settingIcon: {
+    marginRight: 16,
+  },
+  settingItem: {
+    alignItems: 'center',
+    backgroundColor: COLORS.white,
+    borderBottomColor: COLORS.quaternary,
+    borderBottomWidth: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 16,
+    paddingVertical: 16,
+  },
+  settingLeft: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    flex: 1,
+  },
+  settingSubtitle: {
+    color: COLORS.secondary,
+    fontSize: 14,
+  },
+  settingText: {
+    flex: 1,
+  },
+  settingTitle: {
+    color: COLORS.secondary,
+    fontSize: 16,
+    fontWeight: '500',
+    marginBottom: 2,
+  },
+});
