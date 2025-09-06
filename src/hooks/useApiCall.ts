@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 
 import { ApiResponse } from '@/types';
+
 import { useApiState } from './useApiState';
 
 export function useApiCall<T, P extends unknown[]>(apiFunction: (...args: P) => Promise<ApiResponse<T>>) {

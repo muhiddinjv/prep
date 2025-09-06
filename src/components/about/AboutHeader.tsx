@@ -1,8 +1,9 @@
-import { appVersion } from '@/shared/constants';
-
-import { COLORS } from '@/shared/styles';
 import { StyleSheet, Text, View } from 'react-native';
+
 import Icon from 'react-native-vector-icons/MaterialIcons';
+
+import { appVersion } from '@/shared/constants';
+import { COLORS } from '@/shared/styles';
 
 const AboutHeader = () => {
   return (

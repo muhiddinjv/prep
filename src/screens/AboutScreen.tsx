@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { Alert, Linking, ScrollView, StyleSheet, Text, View } from 'react-native';
 
-import { DEVELOPER_INFO, getSettingsConfig } from '@/shared/constants';
-import { COLORS } from '@/shared/styles';
-
 import AboutFooter from '@/components/about/AboutFooter';
 import AboutHeader from '@/components/about/AboutHeader';
 import SettingItem from '@/components/about/SettingItem';
+import { DEVELOPER_INFO, getSettingsConfig } from '@/shared/constants';
+import { COLORS } from '@/shared/styles';
 
 type SettingsState = {
   notifications: boolean;

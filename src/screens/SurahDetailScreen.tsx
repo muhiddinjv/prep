@@ -12,7 +12,6 @@ import { quranAPI } from '@/services/api';
 import { Ayah, BookmarkedAyah, QuranData, Surah, SurahDetailRouteProp } from '@/types';
 
 
-
 export default function SurahDetailScreen() {
   const route = useRoute<SurahDetailRouteProp>();
   const { surahNumber, surahName, targetAyahNumber } = route.params;

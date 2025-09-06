@@ -1,4 +1,5 @@
 import { StyleSheet, Switch, Text, TouchableOpacity, View } from 'react-native';
+
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { COLORS } from '@/shared/styles';

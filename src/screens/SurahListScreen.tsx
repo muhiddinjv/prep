@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 
-import { SurahItem } from '../components/surah/SurahItem';
+import { COLORS } from '@/shared/styles';
+
 import LoadingSpinner from '../components/LoadingSpinner';
+import { SurahItem } from '../components/surah/SurahItem';
 import { useApiCall } from '../hooks/useApiCall';
 import { quranAPI } from '../services/api';
-import { COLORS } from '@/shared/styles';
 
 export default function SurahListScreen() {
   const { loading, error, data, execute } = useApiCall(quranAPI.getSurahs);
