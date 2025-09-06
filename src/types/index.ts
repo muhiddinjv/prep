@@ -7,7 +7,6 @@ export type RootStackParamList = {
   Bookmarks: undefined;
 };
 
-
 export interface ApiResponse<T> {
   code: number;
   status: string;
@@ -20,13 +19,9 @@ export interface QuranApiResponse<T> {
   data: T;
 }
 
-// Surah List Response
 export type SurahListResponse = Array<Surah> & {};
-
-// Individual Surah Response
 export type SurahResponse = Surah & {};
 
-// Surah Type
 export interface Surah {
   number: number;
   name: string;
@@ -37,7 +32,6 @@ export interface Surah {
   ayahs: Ayah[];
 }
 
-// Ayah Type
 export interface Ayah {
   number: number;
   text: string;
@@ -50,12 +44,10 @@ export interface Ayah {
   sajda: boolean;
 }
 
-// Individual Ayah Response
 export interface AyahResponse {
   ayah: Ayah;
 }
 
-// Bookmark Types
 export interface BookmarkedAyah {
   surahNumber: number;
   surahName: string;
@@ -65,27 +57,23 @@ export interface BookmarkedAyah {
   note?: string;
 }
 
-// API Request Parameters
 export interface QuranData {
   number: number;
   language: string;
   reciter: string;
 }
 
-// Error Response
 export interface ApiErrorResponse {
   code: number;
   status: string;
   data: string;
 }
 
-// Loading States
 export interface LoadingState {
   loading: boolean;
   error: string | null;
 }
 
-// Search Types
 export interface SearchResult {
   surah: number;
   ayah: number;
