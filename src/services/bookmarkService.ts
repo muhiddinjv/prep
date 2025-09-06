@@ -4,32 +4,32 @@ import { BookmarkedAyah } from '../types';
 
 const BOOKMARKS_KEY = '@quranic_bookmarks';
 
-export const bookmarkService = {
-  saveBookmark: async (bookmark: BookmarkedAyah): Promise<void> => {
+export class BookmarkService {
+  async saveBookmark(bookmark: BookmarkedAyah): Promise<void> {
     try {
-      const existingBookmarks = await bookmarkService.getBookmarks();
+      const existingBookmarks = await this.getBookmarks();
       const updatedBookmarks = [...existingBookmarks, bookmark];
       await AsyncStorage.setItem(BOOKMARKS_KEY, JSON.stringify(updatedBookmarks));
     } catch (error) {
       console.error('Error saving bookmark:', error);
       throw error;
     }
-  },
+  }
 
-  removeBookmark: async (surahNumber: number, ayahNumber: number): Promise<void> => {
+  async removeBookmark(surahNumber: number, ayahNumber: number): Promise<void> {
     try {
-      const existingBookmarks = await bookmarkService.getBookmarks();
+      const existingBookmarks = await this.getBookmarks();
       const updatedBookmarks = existingBookmarks.filter(
-        bookmark => !(bookmark.surahNumber === surahNumber && bookmark.ayahNumber === ayahNumber)
+        (bookmark) => !(bookmark.surahNumber === surahNumber && bookmark.ayahNumber === ayahNumber),
       );
       await AsyncStorage.setItem(BOOKMARKS_KEY, JSON.stringify(updatedBookmarks));
     } catch (error) {
       console.error('Error removing bookmark:', error);
       throw error;
     }
-  },
+  }
 
-  getBookmarks: async (): Promise<BookmarkedAyah[]> => {
+  async getBookmarks(): Promise<BookmarkedAyah[]> {
     try {
       const bookmarksJson = await AsyncStorage.getItem(BOOKMARKS_KEY);
       return bookmarksJson ? JSON.parse(bookmarksJson) : [];
@@ -37,47 +37,41 @@ export const bookmarkService = {
       console.error('Error getting bookmarks:', error);
       return [];
     }
-  },
+  }
 
-  isBookmarked: async (surahNumber: number, ayahNumber: number): Promise<boolean> => {
+  async isBookmarked(surahNumber: number, ayahNumber: number): Promise<boolean> {
     try {
-      const bookmarks = await bookmarkService.getBookmarks();
-      return bookmarks.some(
-        bookmark => bookmark.surahNumber === surahNumber && bookmark.ayahNumber === ayahNumber
-      );
+      const bookmarks = await this.getBookmarks();
+      return bookmarks.some((bookmark) => bookmark.surahNumber === surahNumber && bookmark.ayahNumber === ayahNumber);
     } catch (error) {
       console.error('Error checking bookmark status:', error);
       return false;
     }
-  },
+  }
 
-  getBookmarksForSurah: async (surahNumber: number): Promise<BookmarkedAyah[]> => {
+  async getBookmarksForSurah(surahNumber: number): Promise<BookmarkedAyah[]> {
     try {
-      const bookmarks = await bookmarkService.getBookmarks();
-      return bookmarks.filter(bookmark => bookmark.surahNumber === surahNumber);
+      const bookmarks = await this.getBookmarks();
+      return bookmarks.filter((bookmark) => bookmark.surahNumber === surahNumber);
     } catch (error) {
       console.error('Error getting surah bookmarks:', error);
       return [];
     }
-  },
+  }
 
-  clearAllBookmarks: async (): Promise<void> => {
+  async clearAllBookmarks(): Promise<void> {
     try {
       await AsyncStorage.removeItem(BOOKMARKS_KEY);
     } catch (error) {
       console.error('Error clearing bookmarks:', error);
       throw error;
     }
-  },
+  }
 
-  updateBookmarkNote: async (
-    surahNumber: number, 
-    ayahNumber: number, 
-    note: string
-  ): Promise<void> => {
+  async updateBookmarkNote(surahNumber: number, ayahNumber: number, note: string): Promise<void> {
     try {
-      const bookmarks = await bookmarkService.getBookmarks();
-      const updatedBookmarks = bookmarks.map(bookmark => {
+      const bookmarks = await this.getBookmarks();
+      const updatedBookmarks = bookmarks.map((bookmark) => {
         if (bookmark.surahNumber === surahNumber && bookmark.ayahNumber === ayahNumber) {
           return { ...bookmark, note };
         }
@@ -88,5 +82,7 @@ export const bookmarkService = {
       console.error('Error updating bookmark note:', error);
       throw error;
     }
-  },
-};
+  }
+}
+
+export const bookmarkService = new BookmarkService();
