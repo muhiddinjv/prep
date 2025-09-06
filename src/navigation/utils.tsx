@@ -18,10 +18,9 @@ export const getTabScreenOptions = ({ route }: { route: RouteProp<ParamListBase,
   },
   tabBarActiveTintColor: COLORS.primary,
   tabBarInactiveTintColor: COLORS.secondary,
-  tabBarLabelStyle: {
-    fontSize: 14,
-    fontWeight: '500',
-  },
+  // tabBarLabelStyle: {
+    //   fontWeight: '500',
+    // },
   tabBarStyle: {
     paddingBottom: 10,
     paddingTop: 10,
