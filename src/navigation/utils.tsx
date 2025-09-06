@@ -1,8 +1,8 @@
 import { ParamListBase, RouteProp } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import { ICONS, ROUTERS } from '../shared/constants/routes';
-import { COLORS } from '../shared/styles/colors';
+import { ICONS, ROUTERS } from '@/shared/constants';
+import { COLORS } from '@/shared/styles';
 
 export const getTabScreenOptions = ({ route }: { route: RouteProp<ParamListBase, string> }) => ({
   tabBarIcon: ({ color, size }: { color: string; size: number }) => {

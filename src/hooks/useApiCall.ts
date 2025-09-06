@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 
-import { ApiState, useApiState } from './useApiState';
+import { useApiState } from './useApiState';
 
 export function useApiCall<T, P extends any[]>(apiFunction: (...args: P) => Promise<T>) {
   const { loading, error, data, setLoading, setError, setData, reset } = useApiState<T>();

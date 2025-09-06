@@ -1,3 +1,11 @@
+import { StackNavigationProp } from '@react-navigation/stack';
+
+export type RootStackParamList = {
+  SurahList: undefined;
+  SurahDetail: { surahNumber: number; surahName: string; targetAyahNumber?: number };
+  Bookmarks: undefined;
+};
+
 export interface QuranApiResponse<T> {
   code: number;
   status: string;
@@ -81,3 +89,5 @@ export interface SearchResponse {
   quran: SearchResult[];
   translation: SearchResult[];
 }
+
+export type SurahListNavigationProp = StackNavigationProp<RootStackParamList, 'SurahList'>;

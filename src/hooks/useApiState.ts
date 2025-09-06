@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 
-import { LoadingState } from '../types';
+import { LoadingState } from '@/types';
 
 export interface ApiState<T> extends LoadingState {
   data: T | null;

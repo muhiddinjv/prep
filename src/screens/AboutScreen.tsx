@@ -3,17 +3,17 @@ import { Alert, Linking, ScrollView, StyleSheet, Text, View } from 'react-native
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import SettingItem from './SettingItem';
-import { appVersion, DEVELOPER_INFO } from '../shared/constants/app';
-import { getSettingsConfig } from '../shared/constants/settings';
-import { COLORS } from '../shared/styles/colors';
+import { appVersion, DEVELOPER_INFO, getSettingsConfig } from '@/shared/constants';
+import { COLORS } from '@/shared/styles';
 
-interface SettingsState {
+import SettingItem from './SettingItem';
+
+type SettingsState = {
   notifications: boolean;
   darkMode: boolean;
   autoPlay: boolean;
   language: string;
-}
+};
 
 export default function AboutScreen() {
   const [settings, setSettings] = useState<SettingsState>({

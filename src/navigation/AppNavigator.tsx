@@ -2,6 +2,7 @@ import React from 'react';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import AboutScreen from '@/screens/AboutScreen';
 import BookmarksScreen from '@/screens/BookmarksScreen';
@@ -11,11 +12,6 @@ import { ROUTERS } from '@/shared/constants';
 import { getTabScreenOptions } from './utils';
 
 const Tab = createBottomTabNavigator();
-export type RootStackParamList = {
-  SurahList: undefined;
-  SurahDetail: { surahNumber: number; surahName: string; targetAyahNumber?: number };
-  Bookmarks: undefined;
-};
 
 const tabs = {
   [ROUTERS.quran]: SurahStack,
@@ -25,12 +21,14 @@ const tabs = {
 
 export default function AppNavigator() {
   return (
-    <NavigationContainer>
-      <Tab.Navigator screenOptions={getTabScreenOptions}>
-        {Object.entries(tabs).map(([name, component]) => (
-          <Tab.Screen key={name} name={name} component={component} />
-        ))}
-      </Tab.Navigator>
-    </NavigationContainer>
+    <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
+      <NavigationContainer>
+        <Tab.Navigator screenOptions={getTabScreenOptions}>
+          {Object.entries(tabs).map(([name, component]) => (
+            <Tab.Screen key={name} name={name} component={component} />
+          ))}
+        </Tab.Navigator>
+      </NavigationContainer>
+    </SafeAreaView>
   );
 }

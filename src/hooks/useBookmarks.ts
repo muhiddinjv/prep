@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import { bookmarkService } from '../services/bookmarkService';
-import { BookmarkedAyah } from '../types';
+import { bookmarkService } from '@/services/bookmarkService';
+import { BookmarkedAyah } from '@/types';
 
 export function useBookmarks() {
   const [bookmarks, setBookmarks] = useState<BookmarkedAyah[]>([]);

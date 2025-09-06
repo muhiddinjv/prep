@@ -1,21 +1,23 @@
 import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack';
 
+import { COLORS } from '@/shared/styles/colors';
+
 import SurahDetailScreen from './SurahDetailScreen';
 import SurahListScreen from './SurahListScreen';
-import { COLORS } from '../shared/styles/colors';
+
 const Stack = createStackNavigator();
 
-export default function SurahStack() {
-  const screenOptions: StackNavigationOptions = {
-    headerStyle: {
-      backgroundColor: COLORS.primary,
-    },
-    headerTintColor: COLORS.quinary,
-    headerTitleStyle: {
-      fontWeight: 'bold' as const,
-    },
-  };
+const screenOptions: StackNavigationOptions = {
+  headerStyle: {
+    backgroundColor: COLORS.primary,
+  },
+  headerTintColor: COLORS.quinary,
+  headerTitleStyle: {
+    fontWeight: 'bold' as const,
+  },
+};
 
+export default function SurahStack() {
   return (
     <Stack.Navigator screenOptions={screenOptions}>
       <Stack.Screen name="SurahList" component={SurahListScreen} options={{ title: 'Surahs' }} />

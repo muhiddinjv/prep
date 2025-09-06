@@ -2,15 +2,16 @@ import { StyleSheet, Switch, Text, TouchableOpacity, View } from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import { COLORS } from '../shared/styles/colors';
+import { COLORS } from '@/shared/styles';
 
 type Props = {
   icon: string;
-  title: string;
-  subtitle?: string;
-  action?: () => void;
   showSwitch?: boolean;
+  subtitle?: string;
   switchValue?: boolean;
+  title: string;
+
+  action?: () => void;
 };
 
 export default function SettingItem({ icon, title, subtitle, action, showSwitch, switchValue }: Props) {
