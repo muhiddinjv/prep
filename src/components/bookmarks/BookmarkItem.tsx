@@ -2,13 +2,9 @@ import React from 'react';
 import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import { RootStackParamList } from '@/navigation/AppNavigator';
-import { BookmarkedAyah } from '@/types';
-
-type BookmarksNavigationProp = StackNavigationProp<RootStackParamList, 'Bookmarks'>;
+import { BookmarkedAyah, SurahListNavigationProp } from '@/types';
 
 type Props = {
   item: BookmarkedAyah;
@@ -16,7 +12,7 @@ type Props = {
 };
 
 export const BookmarksItem = ({ item, removeBookmark }: Props) => {
-  const navigation = useNavigation<BookmarksNavigationProp>();
+  const navigation = useNavigation<SurahListNavigationProp>();
 
   const handleBookmarkPress = () => {
     navigation.navigate('SurahDetail', {
@@ -87,16 +83,6 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.05,
     shadowRadius: 1,
-  },
-  header: {
-    alignItems: 'center',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 16,
-  },
-  listContainer: {
-    flexGrow: 1,
-    padding: 16,
   },
   noteContainer: {
     alignItems: 'flex-start',

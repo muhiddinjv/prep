@@ -1,6 +1,7 @@
 {
   "name": "my-expo-app-ts",
   "version": "1.0.0",
+  "type": "module",
   "main": "index.ts",
   "scripts": {
     "start": "expo start",

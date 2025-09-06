@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 
-import { SurahItem } from './surah/SurahItem';
+import { SurahItem } from '../components/surah/SurahItem';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { useApiCall } from '../hooks/useApiCall';
 import { quranAPI } from '../services/api';
+import { COLORS } from '@/shared/styles';
 
 export default function SurahListScreen() {
   const { loading, error, data, execute } = useApiCall(quranAPI.getSurahs);
@@ -17,7 +18,7 @@ export default function SurahListScreen() {
     <View style={styles.container}>
       <LoadingSpinner loading={loading} error={error} text="Loading Surahs...">
         <FlatList
-          data={data?.data || []}
+          data={data || []}
           renderItem={({ item }) => <SurahItem item={item} />}
           keyExtractor={(item) => item.number.toString()}
           showsVerticalScrollIndicator={false}
@@ -29,7 +30,7 @@ export default function SurahListScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#f8f8f8',
+    backgroundColor: COLORS.white,
     flex: 1,
   },
 });

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Alert, Linking, ScrollView, StyleSheet, Text, View } from 'react-native';
 
-import Icon from 'react-native-vector-icons/MaterialIcons';
-
-import { appVersion, DEVELOPER_INFO, getSettingsConfig } from '@/shared/constants';
+import { DEVELOPER_INFO, getSettingsConfig } from '@/shared/constants';
 import { COLORS } from '@/shared/styles';
 
-import SettingItem from './SettingItem';
+import AboutFooter from '@/components/about/AboutFooter';
+import AboutHeader from '@/components/about/AboutHeader';
+import SettingItem from '@/components/about/SettingItem';
 
 type SettingsState = {
   notifications: boolean;
@@ -62,20 +62,8 @@ export default function AboutScreen() {
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      {/* App Header */}
-      <View style={styles.appHeader}>
-        <View style={styles.appIcon}>
-          <Icon name="book" size={48} color="#ffffff" />
-        </View>
-        <Text style={styles.appName}>Quranic</Text>
-        <Text style={styles.appVersion}>Version {appVersion}</Text>
-        <Text style={styles.appDescription}>A beautiful Quran reading app with translations and bookmarks</Text>
-      </View>
-
-      {/* Settings Section */}
+      <AboutHeader />
       {renderSectionHeader('Settings')}
-
-      {/* Settings Items */}
       {getSettingsConfig(
         settings,
         setSettings,
@@ -94,62 +82,15 @@ export default function AboutScreen() {
           switchValue={setting.switchValue}
         />
       ))}
-
-      {/* Footer */}
-      <View style={styles.footer}>
-        <Text style={styles.footerText}>Made with ❤️ for the Muslim community</Text>
-        <Text style={styles.footerText}>© 2024 Quranic. All rights reserved.</Text>
-      </View>
+      <AboutFooter />
     </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  appDescription: {
-    color: COLORS.secondary,
-    fontSize: 14,
-    lineHeight: 20,
-    textAlign: 'center',
-  },
-  appHeader: {
-    alignItems: 'center',
-    backgroundColor: COLORS.white,
-    marginBottom: 16,
-    padding: 24,
-  },
-  appIcon: {
-    alignItems: 'center',
-    backgroundColor: COLORS.primary,
-    borderRadius: 40,
-    height: 80,
-    justifyContent: 'center',
-    marginBottom: 16,
-    width: 80,
-  },
-  appName: {
-    color: COLORS.primary,
-    fontSize: 28,
-    fontWeight: 'bold',
-    marginBottom: 4,
-  },
-  appVersion: {
-    color: COLORS.secondary,
-    fontSize: 16,
-    marginBottom: 12,
-  },
   container: {
     backgroundColor: COLORS.quinary,
     flex: 1,
-  },
-  footer: {
-    alignItems: 'center',
-    padding: 24,
-  },
-  footerText: {
-    color: COLORS.tertiary,
-    fontSize: 14,
-    marginBottom: 4,
-    textAlign: 'center',
   },
   sectionHeader: {
     backgroundColor: COLORS.quaternary,

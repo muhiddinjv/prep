@@ -6,9 +6,9 @@ import { useFocusEffect } from '@react-navigation/native';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import { useBookmarks } from '@/hooks/useBookmarks';
 
-import { BookmarksItem } from './bookmarks/BookmarkItem';
-import { BookmarksEmptyState } from './bookmarks/BookmarksEmptyState';
-import { BookmarksHeader } from './bookmarks/BookmarksHeader';
+import { BookmarksItem } from '../components/bookmarks/BookmarkItem';
+import { BookmarksEmptyState } from '../components/bookmarks/BookmarksEmptyState';
+import { BookmarksHeader } from '../components/bookmarks/BookmarksHeader';
 
 export default function BookmarksScreen() {
   const { bookmarks, loading, removeBookmark, clearAllBookmarks, refreshBookmarks } = useBookmarks();

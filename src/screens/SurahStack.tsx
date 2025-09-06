@@ -10,11 +10,14 @@ const Stack = createStackNavigator();
 const screenOptions: StackNavigationOptions = {
   headerStyle: {
     backgroundColor: COLORS.primary,
+    elevation: 0,
+    shadowOpacity: 0,
   },
   headerTintColor: COLORS.quinary,
   headerTitleStyle: {
     fontWeight: 'bold' as const,
   },
+  headerStatusBarHeight: 0,
 };
 
 export default function SurahStack() {
