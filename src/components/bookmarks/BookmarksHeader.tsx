@@ -1,7 +1,7 @@
 import React from 'react';
 import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import { MaterialIcons } from '@expo/vector-icons';
 
 type Props = {
   hasBookmarks: boolean;
@@ -26,7 +26,7 @@ export const BookmarksHeader = ({ hasBookmarks, onButtonClear }: Props) => {
 
       {hasBookmarks && (
         <TouchableOpacity style={styles.clearButton} onPress={handleClearAllBookmarks}>
-          <Icon name="clear-all" size={20} color="#d32f2f" />
+          <MaterialIcons name="clear-all" size={20} color="#d32f2f" />
           <Text style={styles.clearButtonText}>Clear All</Text>
         </TouchableOpacity>
       )}

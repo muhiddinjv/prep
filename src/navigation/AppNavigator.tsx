@@ -23,12 +23,12 @@ const tabs = {
 
 export default function AppNavigator() {
   return (
-    <View style={{ backgroundColor: COLORS.primary }}>
+    <View style={{ flex: 1, backgroundColor: COLORS.primary }}>
       <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
         <NavigationContainer>
           <Tab.Navigator screenOptions={getTabScreenOptions}>
             {Object.entries(tabs).map(([name, component]) => (
-              <Tab.Screen key={name} name={name} component={component} />
+              <Tab.Screen key={name} component={component} name={name} />
             ))}
           </Tab.Navigator>
         </NavigationContainer>

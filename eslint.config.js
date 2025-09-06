@@ -1,12 +1,12 @@
-import js from '@eslint/js';
-import importX from 'eslint-plugin-import-x';
-import react from 'eslint-plugin-react';
-import reactHooks from 'eslint-plugin-react-hooks';
-import reactNative from 'eslint-plugin-react-native';
-import simpleImportSort from 'eslint-plugin-simple-import-sort';
-import tseslint from 'typescript-eslint';
+const js = require('@eslint/js');
+const importX = require('eslint-plugin-import-x');
+const react = require('eslint-plugin-react');
+const reactHooks = require('eslint-plugin-react-hooks');
+const reactNative = require('eslint-plugin-react-native');
+const simpleImportSort = require('eslint-plugin-simple-import-sort');
+const tseslint = require('typescript-eslint');
 
-export default [
+module.exports = [
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {

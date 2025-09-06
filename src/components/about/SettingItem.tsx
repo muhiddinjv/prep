@@ -1,11 +1,11 @@
 import { StyleSheet, Switch, Text, TouchableOpacity, View } from 'react-native';
 
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import { MaterialIcons } from '@expo/vector-icons';
 
 import { COLORS } from '@/shared/styles';
 
 type Props = {
-  icon: string;
+  icon?: keyof typeof MaterialIcons.glyphMap;
   showSwitch?: boolean;
   subtitle?: string;
   switchValue?: boolean;
@@ -18,7 +18,7 @@ export default function SettingItem({ icon, title, subtitle, action, showSwitch,
   return (
     <TouchableOpacity style={styles.settingItem} onPress={action} disabled={!action}>
       <View style={styles.settingLeft}>
-        <Icon name={icon} size={24} color={COLORS.primary} style={styles.settingIcon} />
+        <MaterialIcons name={icon} size={24} color={COLORS.primary} style={styles.settingIcon} />
         <View style={styles.settingText}>
           <Text style={styles.settingTitle}>{title}</Text>
           {subtitle && <Text style={styles.settingSubtitle}>{subtitle}</Text>}
@@ -32,7 +32,7 @@ export default function SettingItem({ icon, title, subtitle, action, showSwitch,
           thumbColor={switchValue ? COLORS.white : COLORS.quinary}
         />
       ) : (
-        action && <Icon name="chevron-right" size={24} color={COLORS.secondary} />
+        action && <MaterialIcons name="chevron-right" size={24} color={COLORS.secondary} />
       )}
     </TouchableOpacity>
   );

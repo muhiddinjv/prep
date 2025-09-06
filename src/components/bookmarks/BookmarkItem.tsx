@@ -1,8 +1,8 @@
 import React from 'react';
 import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
+import { MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { BookmarkedAyah, SurahListNavigationProp } from '@/types';
 
@@ -41,7 +41,7 @@ export const BookmarksItem = ({ item, removeBookmark }: Props) => {
           <Text style={styles.verseNumber}>Verse {item.ayahNumber}</Text>
         </View>
         <TouchableOpacity style={styles.removeButton} onPress={handleRemoveBookmark}>
-          <Icon name="delete" size={20} color="#d32f2f" />
+          <MaterialIcons name="delete" size={20} color="#d32f2f" />
         </TouchableOpacity>
       </View>
 
@@ -51,7 +51,7 @@ export const BookmarksItem = ({ item, removeBookmark }: Props) => {
 
       {item.note && (
         <View style={styles.noteContainer}>
-          <Icon name="note" size={16} color="#666" />
+          <MaterialIcons name="note" size={16} color="#666" />
           <Text style={styles.noteText} numberOfLines={2}>
             {item.note}
           </Text>

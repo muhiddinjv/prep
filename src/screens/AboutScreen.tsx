@@ -6,6 +6,7 @@ import AboutHeader from '@/components/about/AboutHeader';
 import SettingItem from '@/components/about/SettingItem';
 import { DEVELOPER_INFO, getSettingsConfig } from '@/shared/constants';
 import { COLORS } from '@/shared/styles';
+import { MaterialIcons } from '@expo/vector-icons';
 
 type SettingsState = {
   notifications: boolean;
@@ -73,7 +74,7 @@ export default function AboutScreen() {
       ).map((setting) => (
         <SettingItem
           key={setting.id}
-          icon={setting.icon}
+          icon={setting.icon as keyof typeof MaterialIcons.glyphMap}
           title={setting.title}
           subtitle={setting.subtitle}
           action={setting.action}

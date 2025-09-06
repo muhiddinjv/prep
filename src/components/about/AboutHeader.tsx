@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native';
 
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import { MaterialIcons } from '@expo/vector-icons';
 
 import { appVersion } from '@/shared/constants';
 import { COLORS } from '@/shared/styles';
@@ -9,7 +9,7 @@ const AboutHeader = () => {
   return (
     <View style={styles.appHeader}>
       <View style={styles.appIcon}>
-        <Icon name="book" size={48} color="#ffffff" />
+        <MaterialIcons name="book" size={48} color="#ffffff" />
       </View>
       <Text style={styles.appName}>Quranic</Text>
       <Text style={styles.appVersion}>Version {appVersion}</Text>

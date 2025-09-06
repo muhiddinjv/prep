@@ -1,6 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import { MaterialIcons } from '@expo/vector-icons';
 
 import { Ayah } from '@/types';
 
@@ -17,7 +17,7 @@ export const AyahItem = ({ item, isBookmarked, onToggleBookmark }: Props) => (
         <Text style={styles.ayahNumber}>{item.numberInSurah}</Text>
       </View>
       <TouchableOpacity style={styles.bookmarkButton} onPress={() => onToggleBookmark(item)}>
-        <Icon
+        <MaterialIcons
           name={isBookmarked ? 'bookmark' : 'bookmark-border'}
           size={24}
           color={isBookmarked ? '#2E7D32' : '#666'}
@@ -40,7 +40,6 @@ export const AyahItem = ({ item, isBookmarked, onToggleBookmark }: Props) => (
 );
 
 const styles = StyleSheet.create({
-
   ayahContainer: {
     backgroundColor: '#ffffff',
     borderRadius: 8,
@@ -86,7 +85,7 @@ const styles = StyleSheet.create({
   bookmarkButton: {
     padding: 4,
   },
-   translationText: {
+  translationText: {
     color: '#666',
     fontSize: 16,
   },
