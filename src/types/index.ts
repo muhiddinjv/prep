@@ -1,3 +1,17 @@
+import { RouteProp } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+
+export type RootStackParamList = {
+  SurahList: undefined;
+  SurahDetail: { surahNumber: number; surahName: string; targetAyahNumber?: number };
+  Bookmarks: undefined;
+};
+
+export interface ApiResponse<T> {
+  code: number;
+  status: string;
+  data: T;
+}
 
 export interface QuranApiResponse<T> {
   code: number;
@@ -5,13 +19,9 @@ export interface QuranApiResponse<T> {
   data: T;
 }
 
-// Surah List Response
-export interface SurahListResponse extends Array<Surah> {}
+export type SurahListResponse = Array<Surah> & {};
+export type SurahResponse = Surah & {};
 
-// Individual Surah Response
-export interface SurahResponse extends Surah {}
-
-// Surah Type
 export interface Surah {
   number: number;
   name: string;
@@ -22,7 +32,6 @@ export interface Surah {
   ayahs: Ayah[];
 }
 
-// Ayah Type
 export interface Ayah {
   number: number;
   text: string;
@@ -35,12 +44,10 @@ export interface Ayah {
   sajda: boolean;
 }
 
-// Individual Ayah Response
 export interface AyahResponse {
   ayah: Ayah;
 }
 
-// Bookmark Types
 export interface BookmarkedAyah {
   surahNumber: number;
   surahName: string;
@@ -50,27 +57,23 @@ export interface BookmarkedAyah {
   note?: string;
 }
 
-// API Request Parameters
 export interface QuranData {
   number: number;
   language: string;
   reciter: string;
 }
 
-// Error Response
 export interface ApiErrorResponse {
   code: number;
   status: string;
   data: string;
 }
 
-// Loading States
 export interface LoadingState {
   loading: boolean;
   error: string | null;
 }
 
-// Search Types
 export interface SearchResult {
   surah: number;
   ayah: number;
@@ -81,4 +84,8 @@ export interface SearchResult {
 export interface SearchResponse {
   quran: SearchResult[];
   translation: SearchResult[];
-} 
+}
+
+export type SurahListNavigationProp = StackNavigationProp<RootStackParamList, 'SurahList'>;
+export type SurahDetailRouteProp = RouteProp<RootStackParamList, 'SurahDetail'>;
+

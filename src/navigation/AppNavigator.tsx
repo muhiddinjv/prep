@@ -1,33 +1,38 @@
-import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import AboutScreen from "../screens/AboutScreen";
-import BookmarksScreen from "../screens/BookmarksScreen";
-import { ROUTERS } from "../shared/constants/routes";
-import { getTabScreenOptions } from "./utils";
-import SurahStack from "../screens/SurahStack";
+import React from 'react';
+import { View } from 'react-native';
 
-const Tab = createBottomTabNavigator(); 
-export type RootStackParamList = {
-  SurahList: undefined;
-  SurahDetail: { surahNumber: number; surahName: string; targetAyahNumber?: number };
-  Bookmarks: undefined;
-};
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
+import AboutScreen from '@/screens/AboutScreen';
+import BookmarksScreen from '@/screens/BookmarksScreen';
+import SurahStack from '@/screens/SurahStack';
+import { ROUTERS } from '@/shared/constants';
+import { COLORS } from '@/shared/styles';
+
+import { getTabScreenOptions } from './utils';
+
+const Tab = createBottomTabNavigator();
 
 const tabs = {
   [ROUTERS.quran]: SurahStack,
   [ROUTERS.bookmarks]: BookmarksScreen,
   [ROUTERS.about]: AboutScreen,
-}
+};
 
 export default function AppNavigator() {
   return (
-    <NavigationContainer>
-      <Tab.Navigator screenOptions={getTabScreenOptions}>
-        {Object.entries(tabs).map(([name, component]) => (
-          <Tab.Screen key={name} name={name} component={component} />
-        ))}
-      </Tab.Navigator>
-    </NavigationContainer>
+    <View style={{ flex: 1, backgroundColor: COLORS.primary }}>
+      <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
+        <NavigationContainer>
+          <Tab.Navigator screenOptions={getTabScreenOptions}>
+            {Object.entries(tabs).map(([name, component]) => (
+              <Tab.Screen key={name} component={component} name={name} />
+            ))}
+          </Tab.Navigator>
+        </NavigationContainer>
+      </SafeAreaView>
+    </View>
   );
 }
